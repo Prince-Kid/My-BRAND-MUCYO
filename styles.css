@@ -408,3 +408,48 @@ a{
 .row:hover .layer{
     height: 100%;
 }
+
+
+.blogs{
+    position: relative;
+    margin: 0 auto;
+    min-height: calc(100vh - 5rem);
+    max-width: 65rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.blogs-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(359px,auto));
+    gap: 10px;
+    margin: 80px auto;
+}
+.blogs .rows{
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    
+}
+.blogs .rows img{
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.5s;
+}
+.time{
+    text-align: start;
+}
+.blog-btn{
+    display: inline;
+    background-color: aqua;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 16px;
+
+}
