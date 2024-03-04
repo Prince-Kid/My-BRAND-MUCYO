@@ -7,34 +7,45 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <a href="" class="logo">PrinceM</a>
-        <nav class="navbar">
-          <a href="#">Home</a>
-          <a href="#About-me">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#project">Portifolio</a>
-          <a href="#blogger">Blogs</a>
-          <a href="#contactpage">Contact</a>
-        </nav>
-        <button class="btn">Sign Up / Login</button>
-    </header>
-    <section id="hero">
-        <div class="herocontent">
-            <span class='hello'>Hello,</span>
-            <span class="hellotext">I'm <span class="helloname">Prince Mucyo</span><br />Web Developer</span>
-            <p class="herodesc">
-                Iam a skilled Web Developer With Experience  <br />in creating Visual appealing and user friendly websites
-            </p>
-            <div class="but">
-            <button class='btni'>Hire Me &#128187;</button>
-          <a href='https://drive.google.com/file/d/1rePoRrTT9Eq0YOnu_JZaevN-FE7I0WTG/view?usp=drive_link'><button class='btni'>My Resume <i class="fa-regular fa-file"></i></button></a>
+  <header class="header" id="header">
+    <a href="#hero" class="logo">PrinceM</a>
+    <nav class="navbar">
+     <li><a href="#hero">Home</a></li>
+     <li><a href="#About-me">About</a></li>
+     <li><a href="#skills">Skills</a></li>
+     <li><a href="#project">Portifolio</a></li>
+     <li><a href="#blogger">Blogs</a></li>
+     <li> <a href="#contactpage">Contact</a></li>
+     <li> <a href="./login.html">Log In</a></li>
+    
+    </nav>  
+    <ul class="sidebar">
+        <a onclick="hideSideBar()"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+        <a href="#hero">Home</a>
+        <a href="#About-me">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#project">Portifolio</a>
+        <a href="#blogger">Blogs</a>
+        <a href="#contactpage">Contact</a>
+        <li> <a href="./login.html">Log In</a></li>
+        </ul> 
+    <li class="menu-btn"> <a  onclick="showSideBar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" color="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+</header>
+<section id="hero">
+    <div class="herocontent">
+        <span class='hello'>Hello,</span>
+        <span class="hellotext">I'm <span class="helloname">Prince Mucyo</span><br />Web Developer</span>
+        <p class="herodesc">
+            Iam a skilled Web Developer With Experience  <br />in creating Visual appealing and user friendly websites
+        </p>
+        <div class="but">
+        <button class='btni' href ="#contactpage">Hire Me &#128187;</button>
+      <a href='https://drive.google.com/file/d/1rePoRrTT9Eq0YOnu_JZaevN-FE7I0WTG/view?usp=drive_link'><button class='btni'>My Resume <i class="fa-regular fa-file"></i></button></a>
 
-          </div>
-        </div>
-        <img src="./Assets/eHIq8czY_400x400.bac80aec41fdf87158ce.jpg" alt="My Profile" class='bg'/>
-      </section>
-
+      </div>
+    </div>
+    <img src="./Assets/eHIq8czY_400x400.bac80aec41fdf87158ce.jpg" alt="My Profile" class='bg'/>
+  </section>
       <section id='About-me'>
         <div class="about-text">
         
@@ -137,5 +148,6 @@ crafting efficient and user-friendly solutions.<br></br>
     
     </div>
 </section>
+
 </body>
 </html>
