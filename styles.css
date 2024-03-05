@@ -420,36 +420,90 @@ a{
     text-align: center;
     
 }
-
-.blogs-content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(359px,auto));
-    gap: 10px;
-    margin: 80px auto;
-}
-.blogs .rows{
+#blog{
     position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    padding-bottom: 10px;
-    
-}
-.blogs .rows img{
-    width: 100%;
-    border-radius: 8px;
-    display: block;
-    transition: transform 0.5s;
-}
-.time{
-    text-align: start;
-}
-.blog-btn{
-    display: inline;
-    background-color: aqua;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 28px;
-    font-size: 16px;
+    margin: 0 auto;
+    min-height: calc(100vh - 5rem);
+    max-width: 65rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
 }
+.blog-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.blog-heading span{
+    color: darkcyan;
+}
+.blog-heading h2{
+font-size: 2.4rem;
+
+}
+.blog-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    flex-wrap: wrap;
+}
+.blog-box{
+    width: 350px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    margin: 20px;
+}
+.blog-img{
+    width: 100%;
+    height: auto;
+}
+.blog-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.blog-text{
+padding: 30px;
+display: flex;
+flex-direction: column;
+}
+.blog-text span{
+    color: darkcyan;
+}
+.blog-text .blog-title{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #272727;
+}
+.blog-text .blog-title:hover{
+    color: darkcyan;
+    transition: all ease 0.3s;
+}
+.blog-text p{
+    color: #9b9b9b;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 20px 0;
+
+}
+.blog-text{
+    color: #0f0f0f;
+}
+.blog-text a:hover{
+    color: darkcyan;
+    transition: ease all 0.3s;
+}
+a{
+    text-decoration: none;
+    color: #0f0f0f;}
