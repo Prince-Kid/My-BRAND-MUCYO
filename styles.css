@@ -530,10 +530,7 @@ a{
     flex-wrap: wrap;
     
 }
-*{
-  
-    background-color: #1f1f1f;
-}
+
 .contactForm{
     margin: 1rem;
     display: flex;
