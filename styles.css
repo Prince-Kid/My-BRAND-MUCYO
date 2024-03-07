@@ -231,7 +231,7 @@ a{
 
 #About-me{
     width: 100vw;
-    height:calc(100vh - 0rem);
+
     max-width: 75rem;
     margin: 0 auto;
     margin-bottom: 50px;
@@ -283,7 +283,7 @@ a{
 #skills{
     position: relative;
     margin: 0 auto;
-    min-height: calc(100vh - 5rem);
+    
     max-width: 65rem;
     align-items: center;
     justify-content: center;
@@ -338,7 +338,7 @@ a{
     border-radius: 8px;
     padding: 12px 28px;
     font-size: 16px;
-
+   margin-top: 10px;
 }
 
 .portifolio{
