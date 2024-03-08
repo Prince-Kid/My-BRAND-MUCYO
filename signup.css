@@ -70,10 +70,9 @@ body{
 }
 
 form{
-    max-width: 40rem;
-    max-height: 80rem;
+    max-width: 30rem;
     margin: 100px auto;
-    padding: 20px;
+    padding: 40px 20px;
     border-radius: 8px;
     height: 400px;
     border: 3px solid darkcyan;
