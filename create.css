@@ -69,10 +69,10 @@ body{
    position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
+    height: 50vh;
     width: 250px;
     z-index: 1;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.9);
     backdrop-filter: blur(10px);
     box-shadow: -10px 0 10px rgba(0,0,0,0.1);
     display: none;
@@ -86,12 +86,16 @@ body{
     padding: 8px;
     color: #fff;
 }
+.sidebar li{
+    list-style: none;
+    margin-top: 50px;
+}
 
 .update{
     position: relative;
     margin: 0 auto;
     min-height: calc(100vh - 5rem);
-    max-width: 65rem;
+    max-width: 70rem;
     display: flex;
     align-items: center;
     flex-direction: column;
