@@ -21,7 +21,9 @@ body{
     position: sticky;
     top: 0;
     z-index: 2;
-   
+    background-color:  #1f1f1fff;
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
 }
 
 .logo{
@@ -69,15 +71,19 @@ body{
     position: fixed;
      top: 0;
      right: 0;
-     height: 100vh;
+     height: 50vh;
      width: 250px;
      z-index: 1;
-     background-color: rgba(0,0,0,0.4);
+     background-color: rgba(0,0,0,0.9);
      backdrop-filter: blur(10px);
      box-shadow: -10px 0 10px rgba(0,0,0,0.1);
      display: none;
      flex-direction: column;
      justify-content: flex-start;
+ }
+ .sidebar li{
+    list-style: none;
+    margin-top: 10px;
  }
  .sidebar a{
      width: 100%;
@@ -213,7 +219,7 @@ a{
     max-height: 60vh;
 }
 form{
-    width: 50%;
+    width: 60%;
     background-color: #ffffff;
     border: 1px solid #ececec;
     margin: 20px auto; 
@@ -230,12 +236,13 @@ textarea{
     border-radius: 8px;
 }
 input[type="submit"]{
-  margin-left: 25%;
+ width: 100%;
   border-radius: 3px;
   background-color: darkcyan;
   color: white;
   border: none;
   cursor: pointer;
+  padding: 10px;
 }
 legend{
     font-weight: 600;
@@ -298,6 +305,7 @@ h1{
     width:50%;
     background-color: #fff;
     margin: 50px 0px;
+    border: none;
 }
 .Newsletter .right i{
     
@@ -445,4 +453,20 @@ font-size: 15px;
 marquee{
     font-size: 28px;
     color: darkcyan;
+}
+@media screen and (max-width : 980px) {
+    input[type="text"],input[type="email"]{
+       display: flex;
+       flex-direction: row;
+       gap: 20px;
+       justify-content: space-between;
+       width: 95%;
+       margin-top: 20px;
+      }
+      .feedback{
+        margin-bottom: 200px;
+      }
+      form{
+       width: 70%;
+      }
 }
