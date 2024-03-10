@@ -1,0 +1,145 @@
+@import url(https://use.fontawesome.com/releases/v6.4.2/css/all.css);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+body{
+    color: #ededed;
+    background-color: #1f1f1fff;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    max-width: 75rem;
+    margin:0 auto;
+    padding: 1rem 2rem;
+    height: 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color:  #1f1f1fff;
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+    position: relative;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+.navbar li{
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+}
+.navbar li a{
+    color: #fff;
+}
+.navbar a:hover{
+    color: darkcyan;
+}
+.menu-btn{
+    display: none;
+    color: #fff;
+    background-color: white;
+
+}
+@media screen and (max-width: 888px){
+    .navbar{
+        display: none;
+    }
+    .menu-btn{
+        display: block;
+        
+    }
+}
+
+.sidebar{
+   position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.sidebar a{
+    width: 100%;
+    background-color: transparent;
+    margin-top: 10px;
+    padding: 8px;
+    color: #fff;
+}
+
+.update{
+    position: relative;
+    margin: 0 auto;
+    min-height: calc(100vh - 5rem);
+    max-width: 65rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+   
+}
+
+.blog-heading span{
+    color: darkcyan;
+}
+.blog-heading h2{
+font-size: 2.4rem;
+
+}
+
+a{
+    text-decoration: none;
+    color: #0f0f0f;
+}
+form{
+
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+    
+}
+
+input{
+    width: 95%;
+    padding: 8px;
+}
+
+textarea{
+    width: 95%;
+    padding: 10px;
+}
+button{
+    width: 50%;
+    margin-top: 20px;
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    background: darkcyan;
+    border: none;
+    margin-left: 24%;
+    border-radius: 3px;
+    font-size: large;
+}
+
+   
