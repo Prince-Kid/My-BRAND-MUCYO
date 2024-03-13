@@ -14,15 +14,28 @@
 </header>
     <section id="signup">
       <div class="signup-board">
-         <form action="">
+         <form action="" id="form">
             <h2>Log In </h2>
-           <input type="email" name="" id="" placeholder="Email address"><br><br>
-           <input type="password" name="" id="" placeholder="Password"><br><br>
-           <h5>Forgot Your Password ?</h5>
-             <button  class="signup-btn"><a href="admin.html">Log In</a></button>
+            
+            <div class="input-control">
+              <input type="email" name="email" id="email" placeholder="Email address">
+              <div class="error"></div>
+             </div><br>
+            
+             <div class="input-control">             
+                  <input id="password" name="password" type="password" placeholder="Enter Password"/>
+  
+                  <div class="error"></div>
+              </div><br>
+  
+              <h5>Forgot Your Password ?</h5>
+             <button  class="signup-btn" type="submit">Log In</button>
+
              <h5 class="signup-now">Create an account <a style ="color: darkcyan" href="./signup.html">Sign Up Now</a></h5>
          </form>
       </div>
     </section>
+
+    <script src="loginValidation.js"></script>
 </body>
 </html>
