@@ -250,15 +250,25 @@ Let's innovate and code together! 🚀 </p>
     </div>
   </section>
 <section  id="contactpage">
-  <h1 class="contactPageTitle">Contact <span style="color:darkcyan">Me</span></h1>
+  <h1 class="contactPageTitle">Contact <span style="color:darkcyan">Me</span></h1><br>
   <span>Please Fill out the form below to discuss any work</span>
-  <form action="" class='contactForm'  >
-      <input type="text" class="name" placeholder='Your Name' name="from_name"/>
-      <input type="email" class="email" placeholder='Your Email' name="from_email"/>
-      <textarea name="message" cols="30" rows="5" class="msg" placeholder='Your Message' ></textarea>
-      <button type='submit' value="send" class='submitBtn'>Submit</button>
 
-     
+  <form action="" class='contactForm' id="form">
+    <div class="input-control">
+      <input type="text" id="names" class="name" placeholder='Your Name' name="from_name"/>
+      <div class="error"></div>
+    </div>
+    <div class="input-control">
+      <input type="email" id="email" class="email" placeholder='Your Email' name="from_email"/>
+      <div class="error"></div>
+    </div>
+    <div class="input-control">
+      <textarea name="message" cols="30" rows="5" class="msg" placeholder='Your Message' id="teaxtArea"></textarea>
+      <div class="error"></div>
+    </div>
+      <button type='submit' class='submitBtn'>Submit</button>
+
+
   </form>
 </section>
 
@@ -344,7 +354,7 @@ Let's innovate and code together! 🚀 </p>
         </p>
     </div>
   </footer>
-  
+  <script src="contactValidation.js"></script>
 </body>
 <script>
   function showSideBar(){
