@@ -14,16 +14,33 @@
 </header>
     <section id="signup">
       <div class="signup-board">
-         <form action="">
+         <form action="" id="form">
             <h2>Sign up </h2>
-        
-           <input type="text" name="" id="" placeholder="Names"><br><br>
-           <input type="email" name="" id="" placeholder="Email address"><br><br>
-           <input type="password" name="" id="" placeholder="Password"><br><br>
-           <input type="password" name="" id="" placeholder="Confirm Password"><br><br>
-             <button  class="signup-btn"><a href="./login.html">Sign Up</a></button>
+           <div class="input-control">
+            <input type="text" id="names" name="names" placeholder="Enter Your Names">
+            <div class="error"></div>
+           </div><br>
+
+           <div class="input-control">
+            <input type="email" name="email" id="email" placeholder="Email address">
+            <div class="error"></div>
+           </div><br>
+          
+           <div class="input-control">             
+                <input id="password" name="password" type="password" placeholder="Enter Password"/>
+
+                <div class="error"></div>
+            </div><br>
+
+            <div class="input-control">
+                
+                <input id="password2"name="password2" type="password" placeholder="Confirm Password"/>
+                <div class="error"></div>
+            </div><br>
+             <button  class="signup-btn" type="submit">Sign Up</button>
          </form>
       </div>
     </section>
+    <script src="signupValidation.js"></script>
 </body>
 </html>
