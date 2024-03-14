@@ -1,6 +1,8 @@
 const form = document.getElementById('form');
-const email = document.getElementById('names');
-const password = document.getElementById('email');
+const names = document.getElementById('names');
+const email = document.getElementById('email');
+const text = document.getElementById('teaxtArea');
+
 form.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -28,28 +30,34 @@ const setSuccess = element => {
 
 const validateInputs = () => {
    
+    const nameValue = names.value.trim();
     const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
+    const textValue = text.value.trim();
 
 
+    if(nameValue === '') {
+        setError(names, 'Your Names are required');
+    }
+    else {
+        setSuccess(names);
+    }
 
     if(emailValue === '') {
-        setError(email, 'Email is required');
-    }
+        setError(email, 'Your Email is required');
+    } 
     else {
         setSuccess(email);
     }
 
-    if(passwordValue === '') {
-        setError(password, 'Password is required');
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 character.')
-    } else {
-        setSuccess(password);
+    if(textValue === '') {
+        setError(text, 'Please Enter Your Message');
+    }
+    else {
+        setSuccess(text);
     }
 
-   if(emailValue && passwordValue > 8){
-    window.location.href = "admin.html";
+   if(emailValue && nameValue  && textValue){
+   alert("Your Message Received SuccessFully Thank You !!!!")
    }
    
     
