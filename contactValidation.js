@@ -1,11 +1,13 @@
+
+
 const form = document.getElementById('form');
-const names = document.getElementById('names');
-const email = document.getElementById('email');
-const text = document.getElementById('teaxtArea');
+const namesInput = document.getElementById('names');
+const emailInput = document.getElementById('email');
+const textAreaInput = document.getElementById('teaxtArea');
+const userFeedback = document.querySelector(".messages");
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-
     validateInputs();
 });
 
@@ -15,8 +17,8 @@ const setError = (element, message) => {
 
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
+    inputControl.classList.remove('success');
+};
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
@@ -27,38 +29,72 @@ const setSuccess = element => {
     inputControl.classList.remove('error');
 };
 
-
 const validateInputs = () => {
-   
-    const nameValue = names.value.trim();
-    const emailValue = email.value.trim();
-    const textValue = text.value.trim();
-
+    const nameValue = namesInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const textValue = textAreaInput.value.trim();
 
     if(nameValue === '') {
-        setError(names, 'Your Names are required');
+        setError(namesInput, 'Your Names are required');
     }
     else {
-        setSuccess(names);
+        setSuccess(namesInput);
     }
 
     if(emailValue === '') {
-        setError(email, 'Your Email is required');
+        setError(emailInput, 'Your Email is required');
     } 
     else {
-        setSuccess(email);
+        setSuccess(emailInput);
     }
 
     if(textValue === '') {
-        setError(text, 'Please Enter Your Message');
+        setError(textAreaInput, 'Please Enter Your Message');
     }
     else {
-        setSuccess(text);
+        setSuccess(textAreaInput);
     }
 
-   if(emailValue && nameValue  && textValue){
-   alert("Your Message Received SuccessFully Thank You !!!!")
-   }
-   
-    
+    if(emailValue && nameValue && textValue) {
+        alert("Your Message Received Successfully. Thank You!");
+        const newFeedback = addFeedback(nameValue, emailValue, textValue);
+        createFeedback(newFeedback);
+        
+        namesInput.value = "";
+        emailInput.value = "";
+        textAreaInput.value = "";
+    }
 };
+
+const addFeedback = (names, email, text) => {
+    const feedback = { names, email, text };
+    const existingFeedback = localStorage.getItem("Feedback");
+    const feedbackList = existingFeedback ? JSON.parse(existingFeedback) : [];
+    feedbackList.push(feedback);
+    localStorage.setItem("Feedback", JSON.stringify(feedbackList));
+    return feedback;
+};
+
+const createFeedback = (feedback) => {
+    console.log("Creating feedback:", feedback);
+    const feedbackCard = document.createElement("div");
+    const userName = document.createElement("h4");
+    const userEmail = document.createElement("p");
+    const userText = document.createElement("p");
+
+    userName.innerHTML = "User Name: " + feedback.names;
+    userEmail.innerHTML = "Email: " + feedback.email;
+    userText.innerHTML = "Message: " + feedback.text;
+
+    feedbackCard.append(userName, userEmail, userText);
+    userFeedback.appendChild(feedbackCard);
+   
+};
+
+
+// Retrieve feedback from localStorage and display it
+const existingFeedback = localStorage.getItem("Feedback");
+if (existingFeedback) {
+    const feedbackList = JSON.parse(existingFeedback);
+    feedbackList.forEach(createFeedback);
+}
