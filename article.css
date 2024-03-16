@@ -227,7 +227,7 @@ form{
     border-radius: 8px;
 }
 input{
-   width: 49.5%;
+   width: 95%;
    padding: 8px;
 }
 textarea{
@@ -248,8 +248,29 @@ legend{
     font-weight: 600;
     color: #0f0f0f;
 }
+.input-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 60rem;
+}
+.input-control.success input{
+    border-color:  #09c372;
+}
+.input-control.error input{
+        border-color:  #ff3860;
+}
+.input-control .error {
+        color: #ff3860;
+        font-size: 13px;
+        height: 13px;
+        text-align: start;
+        width: 95%;
+}
 h1{
     text-align: center;
+   
 }
 .reaction{
   
@@ -469,4 +490,57 @@ marquee{
       form{
        width: 70%;
       }
+}
+
+
+#commentContainer{
+    
+    max-width: 60rem;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.commentContent{
+    border:1px solid #ededed;
+    padding: 10px;
+    width: 100%;
+    margin: 0px auto;
+    border-radius: 12px;
+ }
+.user{
+    color: white;
+    margin: 5px;
+    float: left;
+}
+.email{
+    color: darkcyan;
+    font-size: small;
+}
+.comm{
+
+    border: 2px solid white;
+    padding: 20px;
+
+}
+.prof{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.reply{
+    margin: 5px;
+    padding: 5px;
+ 
+    cursor: pointer;
+}
+.like{
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: transparent;
+   border: none;
+    font-size: large;
 }

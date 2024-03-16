@@ -76,15 +76,15 @@ const addFeedback = (names, email, text) => {
 };
 
 const createFeedback = (feedback) => {
-    console.log("Creating feedback:", feedback);
-    const feedbackCard = document.createElement("div");
-    const userName = document.createElement("h4");
-    const userEmail = document.createElement("p");
-    const userText = document.createElement("p");
 
-    userName.innerHTML = "User Name: " + feedback.names;
-    userEmail.innerHTML = "Email: " + feedback.email;
-    userText.innerHTML = "Message: " + feedback.text;
+    const feedbackCard = document.createElement("tr");
+    const userName = document.createElement("td");
+    const userEmail = document.createElement("td");
+    const userText = document.createElement("td");
+
+    userName.innerHTML =  feedback.names;
+    userEmail.innerHTML =  feedback.email;
+    userText.innerHTML =  feedback.text;
 
     feedbackCard.append(userName, userEmail, userText);
     userFeedback.appendChild(feedbackCard);

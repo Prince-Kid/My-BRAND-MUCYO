@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="message.css">
     <title>Messages - Clients</title>
 </head>
 <body>
-    <form action=""  id="form">
-      </form>
- <div class="messages"></div>
+    <header class="header" id="header">
+        <a href="index.html" class="logo">PrinceM</a>
+        <nav class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin.html">Manage Blog</a></li>
+            <li><a href="message.html">Messages</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li> <a href="./login.html">Log Out</a></li>
+           
+        
+        </nav>  
+        <ul class="sidebar">
+            <a class="x-btn" onclick="hideSideBar()" ><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" style="background-color: white;"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+        <li><a href="index.html" >Home</a></li>
+         <li><a href="admin.html" class="active">Manage Blog</a></li>
+         <li><a href="message.html">Messages</a></li>
+         
+         <li> <a href="./login.html">Log Out</a></li>
+        
+            </ul> 
+        <li class="menu-btn"> <a  onclick="showSideBar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" color="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+
+    </header>
+         
+ <section id="feedback">
+    
+    <h2>Feedback</h2>
+    <table id="form" >
+        <thead>
+            <tr>
+                <th>Names</th>
+                <th>Email</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody class="messages"></tbody>
+    </table>
+</section>
+    
+    <script src="contactValidation.js"></script>
 </body>
-<script src="contactValidation.js"></script>
+<script>
+    function showSideBar(){
+        const sideBar = document.querySelector('.sidebar');
+        sideBar.style.display = 'flex'
+    }
+    function hideSideBar(){
+        const sideBar = document.querySelector('.sidebar');
+        sideBar.style.display = 'none'
+    }
+</script>
 </html>
