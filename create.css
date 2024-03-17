@@ -146,4 +146,19 @@ button{
     font-size: large;
 }
 
-   
+.input-control input .success{
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 10px; 
+    margin-left: 0;
+    text-align: start;
+    width: 400px;
+}

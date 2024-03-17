@@ -34,18 +34,37 @@
                 <h2>create <span>Article</span></h2>
             </div>
           
-           <form action="">
+           <form  id="createForm">
+            
             <label for="">Title Of Article</label> <br><br>
-            <input type="text" placeholder="Title Of Article....................."><br><br>
+
+            <div class="input-control">
+            <input type="text" id="ArticleTitle" name="ArticleTitle"placeholder="Title Of Article.....................">
+            <div class="error"></div>
+            </div>    <br><br>
+
             <label for="">Article Cover :</label>
-            <input type="file" placeholder="Article Cover"><br>
+            <div class="input-control">
+            <input type="file" id="articleCover" placeholder="Article Cover">
+            <div class="error"></div>
+        </div>  <br>
+
             <label for="">Article Content</label><br><br>
-            <textarea name="" id="" cols="100" rows="10">Article Content ................</textarea><br>
-            <button>create</button>
+            <div class="input-control">
+            
+            <textarea  id="articleContent" cols="100" rows="10"></textarea>
+            <div class="error"></div>
+             </div>   <br>
+
+            <button type="submit">create</button>
+
            </form>
 
         </section>
+        
+        <script src="create.js"></script>
 </body>
+
 <script>
     function showSideBar(){
         const sideBar = document.querySelector('.sidebar');
