@@ -42,14 +42,13 @@ const validateInputs = () => {
 
     if(passwordValue === '') {
         setError(password, 'Password is required');
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 character.')
-    } else {
+    }
+    else {
         setSuccess(password);
     }
 
    if(emailValue && passwordValue > 8){
-    window.location.href = "admin.html";
+    window.location.href = "./Admin/admin.html";
    }
    
     

@@ -513,6 +513,10 @@ marquee{
     color: white;
     margin: 5px;
     float: left;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .email{
     color: darkcyan;
@@ -525,10 +529,10 @@ marquee{
 
 }
 .prof{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    
+   float: right;
+
+    margin-top: 5px;
 }
 .reply{
     margin: 5px;
@@ -543,4 +547,7 @@ marquee{
     background-color: transparent;
    border: none;
     font-size: large;
+}
+#createForm{
+    display: none;
 }

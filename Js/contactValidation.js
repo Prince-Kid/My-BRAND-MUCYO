@@ -63,6 +63,8 @@ const validateInputs = () => {
         namesInput.value = "";
         emailInput.value = "";
         textAreaInput.value = "";
+
+        window.location.href=`index.html`
     }
 };
 
@@ -91,8 +93,6 @@ const createFeedback = (feedback) => {
    
 };
 
-
-// Retrieve feedback from localStorage and display it
 const existingFeedback = localStorage.getItem("Feedback");
 if (existingFeedback) {
     const feedbackList = JSON.parse(existingFeedback);

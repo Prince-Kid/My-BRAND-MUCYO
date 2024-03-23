@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="create.css">
+    <link rel="stylesheet" href="../Css/create.css">
     <title>create Article</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
          <li><a href="index.html">Home</a></li>
          <li><a href="admin.html">Manage Blog</a></li>
          <li><a href="#">Messages</a></li>
-         
+         <li><a href="profile.html">Profile</a></li>
          <li> <a href="./login.html">Log Out</a></li>
         
         </nav>  
@@ -31,40 +31,21 @@
 
         <section class="update">
             <div class="blog-heading">
-                <h2>create <span>Article</span></h2>
+                <h2>Admin <span>Profile</span></h2>
             </div>
           
-           <form  id="createForm">
-            
-            <label for="">Title Of Article</label> <br><br>
-
-            <div class="input-control">
-            <input type="text" id="ArticleTitle" name="ArticleTitle"placeholder="Title Of Article.....................">
-            <div class="error"></div>
-            </div>    <br><br>
-
-            <label for="">Article Cover :</label>
-            <div class="input-control">
-            <input type="file" id="articleCover" placeholder="Article Cover">
-            <div class="error"></div>
-        </div>  <br>
-
-            <label for="">Article Content</label><br><br>
-            <div class="input-control">
-            
-            <textarea  id="articleContent" cols="100" rows="10"></textarea>
-            <div class="error"></div>
-             </div>   <br>
-
-            <button type="submit">create</button>
-
+           <form action="">
+            <label for="">Names</label> <br>
+            <input type="text" placeholder="MUCYO Prince"><br><br>
+            <label for="">Email </label>
+            <input type="email" placeholder="mucyoprinc12@gmail.com"><br>
+            <label for="">Password</label><br>
+            <input type="password" name="" id="" placeholder=".........">
+            <button>Edit</button>
            </form>
 
         </section>
-        
-        <script src="create.js"></script>
 </body>
-
 <script>
     function showSideBar(){
         const sideBar = document.querySelector('.sidebar');
