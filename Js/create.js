@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const blogContainer = document.getElementById("main-blog-container")
     const singleArticle = document.querySelector(".article")
     
-
     createForm.addEventListener("submit", e => {
         e.preventDefault();
         inputValidation();
@@ -74,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
  /**************************** Creating  New Article ***********************************/
      
   const addArticle = (title,cover,content) =>{
+    
     const currentDate = new Date().toLocaleDateString();
     const articles = { title, cover, content, dateCreated: currentDate };
     const existingArticle = localStorage.getItem("article")
@@ -93,22 +93,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (confirm){
             let articleList = JSON.parse(localStorage.getItem("article"))
-            if (articleList && Array.isArray(articleList) && index >= 0 && index < articleList.length) {
+            let comments = JSON.parse(localStorage.getItem('comment'))
+            if (articleList && Array.isArray(articleList) && index >= 0 && index < articleList.length ) {
                 articleList.splice(index, 1);
-                localStorage.setItem("article", JSON.stringify(articleList));
-    
-                let comments = JSON.parse(localStorage.getItem('comment'));
-                let filteredComments = comments.filter(comment => comment.articleId !== articleList[index].id);
-                localStorage.setItem("comment", JSON.stringify(filteredComments));
-                
-                window.location.reload();
-            } else {
-                console.error("Invalid index or article list.");
+                localStorage.setItem("article", JSON.stringify(articleList));                
             }
+            
+            let count  = 0;
+            for(i = 0 ; i < comments.length; i++){
+                
+            if(comments[i].articleId == index){
+                  count ++;               
+                }
+             }
+             comments.splice(index,count)
+             localStorage.setItem("comment",JSON.stringify(comments))
+            
+             window.location.reload();
 
         }
     }
-
 
 /*************************** Displaying The Articles In UI ****************/
 
@@ -129,7 +133,7 @@ if(articleList !== ""){
                 <a href="#" class="blog-title">${articleList[i].title}</a>
                 <p>${articleList[i].content}</p>
                 <div class="edit">
-                    <a href="#" class="delete-btn" ><svg fill="red" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 354.319 354.319" xml:space="preserve" stroke="red">
+                    <a href="#" class="delete-btn"  ><svg fill="red" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 354.319 354.319" xml:space="preserve" stroke="red">
 
                         <g id="SVGRepo_bgCarrier" stroke-width="0"/>
                         
