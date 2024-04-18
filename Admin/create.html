@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/create.css">
+    <link rel="stylesheet" href="../Css/popup.css">
     <title>create Article</title>
 </head>
 <body>
@@ -56,12 +57,26 @@
             <div class="error"></div>
              </div>   <br>
 
-            <button type="submit">create</button>
+            <button type="submit" id="open-popup-btn" >create</button>
 
            </form>
 
         </section>
         
+        <div class="popUp-card center">
+            <div class="popUp-icon">
+                 <i class="fa fa-check"></i>
+            </div>
+            <div class="poptitle">
+              <h2>Success !!</h2>
+            </div>
+            <div class="description">
+              <h4>Article Created Successfully !!!!</h4>
+            </div>
+            <div class="dismiss-btn">
+                <button id="dismiss-btn">Dismiss</button>
+            </div>
+        </div>
         <script src="..//Js/create.js"></script>
 </body>
 
@@ -74,5 +89,17 @@
         const sideBar = document.querySelector('.sidebar');
         sideBar.style.display = 'none'
     }
+    
+
+    // document.getElementById("createForm").addEventListener("submit",e=>{
+    //     e.preventDefault()
+
+    //   const articleTitleValue =  document.getElementById("ArticleTitle").value;
+    //   const articleCover = document.getElementById("articleCover").files[0];
+    //   const articleContentValue=  document.getElementById("articleContent").value;
+
+    // })
+   
+        
 </script>
 </html>
