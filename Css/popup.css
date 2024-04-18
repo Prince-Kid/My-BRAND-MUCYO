@@ -1,0 +1,207 @@
+@import url(https://use.fontawesome.com/releases/v6.4.2/css/all.css);
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popUp-card {
+  width: 400px;
+  height: 280;
+  padding: 30px 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  top: -200%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+    transform 1000ms ease-in-out;
+}
+
+.popUp-card.active {
+  opacity: 1;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+.popUp-card .popUp-icon {
+  margin: 5px 0px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #34f234;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 60px;
+}
+
+.popUp-card .popUp-icon i.fa {
+  font-size: 30px;
+  color: #34f234;
+}
+.popUp-card .poptitle h2 {
+  margin: 5px 0px;
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+}
+.popUp-card .description {
+  color: #222;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.popUp-card .dismiss-btn button {
+  padding: 10px 20px;
+  background: #111;
+  color: #f5f5f5;
+  border: 2px solid #111;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 10px;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  margin-right: 75px;
+}
+.popUp-card .dismiss-btn button:hover {
+  color: #111;
+  background: #f5f5f5;
+}
+
+.popUp-card1 {
+  width: 400px;
+  height: 280;
+  padding: 30px 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  top: -200%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+    transform 1000ms ease-in-out;
+}
+.popUp-card1.active {
+  opacity: 1;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+.popUp-card1 .popUp-icon1 {
+  margin: 5px 0px;
+  width: 50px;
+  height: 50px;
+
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 60px;
+}
+
+.popUp-card1 .popUp-icon1 i.fa-solid {
+  font-size: 60px;
+  color: #dd1d1d;
+}
+.popUp-card1 .poptitle h2 {
+  margin: 5px 0px;
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+}
+.popUp-card1 .description {
+  color: #222;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.popUp-card1 .dismiss-btn button {
+  padding: 10px 20px;
+  background: #111;
+  color: #f5f5f5;
+  border: 2px solid #111;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 10px;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  margin-right: 75px;
+}
+.popUp-card1 .dismiss-btn button:hover {
+  color: #111;
+  background: #f5f5f5;
+}
+
+.popUp-card2 {
+  width: 400px;
+  height: 280;
+  padding: 30px 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  top: -200%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
+    transform 1000ms ease-in-out;
+}
+.popUp-card2.active {
+  opacity: 1;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+.popUp-card2 .popUp-icon {
+  margin: 5px 0px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #34f234;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  line-height: 60px;
+}
+
+.popUp-card2 .popUp-icon i.fa {
+  font-size: 30px;
+  color: #34f234;
+}
+.popUp-card2 .poptitle h2 {
+  margin: 5px 0px;
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+}
+.popUp-card2 .description {
+  color: #222;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.popUp-card2 .dismiss-btn button {
+  padding: 10px 20px;
+  background: #111;
+  color: #f5f5f5;
+  border: 2px solid #111;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 10px;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  margin-right: 75px;
+}
+.popUp-card2 .dismiss-btn button:hover {
+  color: #111;
+  background: #f5f5f5;
+}
