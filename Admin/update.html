@@ -1,63 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Css/create.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/create.css" />
     <title>Update Article</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header" id="header">
-        <a href="#hero" class="logo">PrinceM</a>
-        <nav class="navbar">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="admin.html">Manage Blog</a></li>
-            <li><a href="#">Messages</a></li>
-            
-            <li> <a href="./login.html">Log Out</a></li>
-           
-       
-        
-        </nav>  
-        <ul class="sidebar">
-            <a class="x-btn" onclick="hideSideBar()" ><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" style="background-color: white;"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="admin.html">Manage Blog</a></li>
-            <li><a href="#">Messages</a></li>
-            
-            <li> <a href="./login.html">Log Out</a></li>
-           
-            </ul> 
-        <li class="menu-btn"> <a  onclick="showSideBar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" color="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+      <a href="#hero" class="logo">PrinceM</a>
+      <nav class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin.html">Manage Blog</a></li>
+        <li><a href="#">Messages</a></li>
 
+        <li><a href="./login.html">Log Out</a></li>
+      </nav>
+      <ul class="sidebar">
+        <a class="x-btn" onclick="hideSideBar()"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+            style="background-color: white"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            /></svg
+        ></a>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin.html">Manage Blog</a></li>
+        <li><a href="#">Messages</a></li>
+
+        <li><a href="./login.html">Log Out</a></li>
+      </ul>
+      <li class="menu-btn">
+        <a onclick="showSideBar()" href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+            color="white"
+          >
+            <path
+              d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+            /></svg
+        ></a>
+      </li>
     </header>
 
-        <section class="update">
-            <div class="blog-heading">
-                <h2>Update <span>Article</span></h2>
-            </div>
-          
-           <form action="" id="updateForm">
-            <label for="">Title Of Article</label> <br><br>
-            <input type="text" placeholder="Title Of Article....................." id="title"><br><br>
-            <label for="">Article Cover :</label>
-            <input type="file" placeholder="Article Cover" id="cover"><br>
-            <label for="">Article Content</label><br><br>
-            <textarea name="" id="content" cols="100" rows="10">Article Content ................</textarea><br>
-            <button type="submit">Update</button>
-           </form>
+    <section class="update">
+      <div class="blog-heading">
+        <h2>Update <span>Article</span></h2>
+      </div>
 
-        </section>
-        <script src="../Js/update.js"></script>
-</body>
-<script>
-    function showSideBar(){
-        const sideBar = document.querySelector('.sidebar');
-        sideBar.style.display = 'flex'
+      <form id="updateForm">
+        <label for="">Title Of Article</label> <br /><br />
+        <input
+          type="text"
+          placeholder="Title Of Article....................."
+          id="title"
+        /><br /><br />
+        <label for="">Article Cover :</label>
+        <input type="file" placeholder="Article Cover" id="cover" /><br />
+        <label for="">Article Content</label><br /><br />
+        <textarea name="" id="content" cols="100" rows="10"></textarea><br />
+        <button type="submit">Update</button>
+      </form>
+    </section>
+
+    <div class="popUp-card center">
+      <div class="popUp-icon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="poptitle">
+        <h2>Success !!</h2>
+      </div>
+      <div class="description">
+        <h4>Article Updated Successfully !!!!</h4>
+      </div>
+      <div class="dismiss-btn">
+        <button id="dismiss-btn">Dismiss</button>
+      </div>
+    </div>
+
+    <script src="../Js/update.js"></script>
+  </body>
+  <script>
+    function showSideBar() {
+      const sideBar = document.querySelector(".sidebar");
+      sideBar.style.display = "flex";
     }
-    function hideSideBar(){
-        const sideBar = document.querySelector('.sidebar');
-        sideBar.style.display = 'none'
+    function hideSideBar() {
+      const sideBar = document.querySelector(".sidebar");
+      sideBar.style.display = "none";
     }
-</script>
+  </script>
 </html>
