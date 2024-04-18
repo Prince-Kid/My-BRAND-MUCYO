@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const articleTitleValue = articleTitle.value.trim();
        
         const articleContentValue = articleContent.value.trim();
-
+        
         if (articleTitleValue === "") {
             setError(articleTitle, "Ooops Please Enter The Title");
         } else {
@@ -50,39 +50,57 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         if(articleTitleValue && articleContentValue && articleCover.files[0]){
-            alert("Article Created SuccessFully  !!!!!!")
-         
-         const file = articleCover.files[0]
-         const reader = new FileReader()
-         reader.readAsDataURL(file)
-         reader.onload = function(){
-         const cover  = reader.result;
+    
+      
+       const BlogContent = new FormData()
 
-           const newArticle = addArticle(articleTitleValue,cover,articleContentValue)
-           createArticleContainer(newArticle)
-           articleTitle.value = ""
-           articleCover.value = ""
-           articleContent.value = ""
-
-           window.location.href=`./Admin/admin.html`
+       BlogContent.append("title",articleTitleValue)
+       BlogContent.append("cover",articleCover.files[0])
+       BlogContent.append("content",articleContentValue)
+    
+       console.log(BlogContent)
+        let tokens = localStorage.getItem('jwt')
+        let token = JSON.parse(tokens)
+        console.log(token)
+      fetch("http://localhost:5000/blog/create",{
+       method: "POST",
+       headers : {
+          'Authorization':`Bearer ${token}`
+       },
+       body:BlogContent
+      })
+       .then(res => res.json())
+       .then(data =>{
+           console.log(data)
+           
+           document.getElementsByClassName("popUp-card")[0].classList.add("active");
+           document.getElementById("dismiss-btn").addEventListener("click",function(){
+           document.getElementsByClassName("popUp-card")[0].classList.remove("active");
+           window.location.href=`./admin.html`
+       })
+       })
+       .catch(error=>{
+           console.log("There was an Error",error)
+        })
+        
         }
 
-        }
+        
     };
 
  /**************************** Creating  New Article ***********************************/
      
-  const addArticle = (title,cover,content) =>{
+//   const addArticle = (title,cover,content) =>{
     
-    const currentDate = new Date().toLocaleDateString();
-    const articles = { title, cover, content, dateCreated: currentDate };
-    const existingArticle = localStorage.getItem("article")
-    const articleList = existingArticle ? JSON.parse(existingArticle): [];
+//     const currentDate = new Date().toLocaleDateString();
+//     const articles = { title, cover, content, dateCreated: currentDate };
+//     const existingArticle = localStorage.getItem("article")
+//     const articleList = existingArticle ? JSON.parse(existingArticle): [];
   
-    articleList.push(articles);
-   localStorage.setItem("article",JSON.stringify(articleList))
-   return articles
-  }
+//     articleList.push(articles);
+//    localStorage.setItem("article",JSON.stringify(articleList))
+//    return articles
+//   }
 
 
     /*************************** Delete ***************** */
@@ -172,12 +190,13 @@ if(articleList !== ""){
          }
         
 
-    }
-    else{
+     }
+     else{
         blogContent.innerHTML = "Ooooop There is No Blog "
 
     }
 
+        
   
     
 /******************************** Displaying The Individual Article************************************/

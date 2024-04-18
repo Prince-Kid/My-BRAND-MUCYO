@@ -1,40 +1,61 @@
-    document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
+  const updateForm = document.getElementById("updateForm");
 
-    const updateForm = document.getElementById("updateForm")
+  const urlParams = new URLSearchParams(window.location.search);
+  const articleId = urlParams.get("id");
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get("id");
-
-    const articleData = JSON.parse(localStorage.getItem("article"))[articleId]
-
-    console.log(articleData)
-
-    document.getElementById("title").value = articleData.title
-    document.getElementById("content").value = articleData.content
-    
-    updateForm.addEventListener("submit", e =>{
-        e.preventDefault()
-    
-    const updateTitle = document.getElementById("title").value
-    const updateContent = document.getElementById("content").value
-    const updatedImage = document.getElementById("cover").files[0]
-    const reader = new FileReader();
-    reader.readAsDataURL(updatedImage)
-    reader.onload = function(){
-        const cover = reader.result ;
-
-        const articles = JSON.parse(localStorage.getItem("article"))
-        articles[articleId].title = updateTitle
-        articles[articleId].content = updateContent
-        articles[articleId].cover = cover
-        
-        localStorage.setItem("article",JSON.stringify(articles))
-    
-            window.location.href=`admin.html`
-      
-    
-    }
-    
-})
-
+  fetch(`https://my-brand-back-end-ts.onrender.com/blog/getBlog/${articleId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("title").value = data.title;
+      document.getElementById("content").value = data.content;
     })
+    .catch((error) => {
+      console.log("Erorr", error);
+    });
+
+  updateForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const articleTitleValue = document.getElementById("title").value;
+    const articleCover = document.getElementById("cover").files[0];
+    const articleContentValue = document.getElementById("content").value;
+
+    const BlogContent = new FormData();
+
+    BlogContent.append("title", articleTitleValue);
+    BlogContent.append("cover", articleCover);
+    BlogContent.append("content", articleContentValue);
+
+    let tokens = localStorage.getItem("jwt");
+    let token = JSON.parse(tokens);
+    fetch(
+      `https://my-brand-back-end-ts.onrender.com/blog/update/${articleId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: BlogContent,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        document
+          .getElementsByClassName("popUp-card")[0]
+          .classList.add("active");
+
+        document
+          .getElementById("dismiss-btn")
+          .addEventListener("click", function () {
+            document
+              .getElementsByClassName("popUp-card")[0]
+              .classList.remove("active");
+            window.location.href = `./admin.html`;
+          });
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  });
+});

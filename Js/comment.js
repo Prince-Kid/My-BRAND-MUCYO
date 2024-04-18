@@ -58,27 +58,49 @@ if(fullNameValue && userEmailValue && commentValue){
  
      alert("Your Comment Was Submitted Successfully !!")
 
-    const newComment = addComment(fullNameValue,userEmailValue,commentValue)
-    createCommentContainer(newComment)
-    fullName.value = ""
-    userEmail.value = ""
-    comment.value = ""
+    // const newComment = addComment(fullNameValue,userEmailValue,commentValue)
+    // createCommentContainer(newComment)
 
+    // fullName.value = ""
+    // userEmail.value = ""
+    // comment.value = ""
+
+    const url = URLSearchParams(window.location.href)
+    const id = url.get("id");
+
+    const commentData = {
+        fullNameValue,
+        userEmailValue,
+        commentValue
+    }
+
+    fetch(`http://localhost:5000/blog/comment/${id}`,{
+        method:"POST",
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(commentData)
+    })
+    .then(res => res.json)
+    .then(commentInfo => console.log("comment Info : ",commentInfo))
+    .catch(error=>[
+        console.log("Error",error)
+    ])
     window.location.href="article.html"
 }
 
 }
 
 
-const addComment = (fullName,userEmail,comment) =>{
-  const comments = {fullName,userEmail,comment}
-  const existingComment  =  localStorage.getItem("comment")
-  const commentList = existingComment ? JSON.parse(existingComment) : [];
-  commentList.push(comments)
-  localStorage.setItem("comment",JSON.stringify(commentList))
+// const addComment = (fullName,userEmail,comment) =>{
+//   const comments = {fullName,userEmail,comment}
+//   const existingComment  =  localStorage.getItem("comment")
+//   const commentList = existingComment ? JSON.parse(existingComment) : [];
+//   commentList.push(comments)
+//   localStorage.setItem("comment",JSON.stringify(commentList))
 
-  return comments
-}
+//   return comments
+// }
 
 const createCommentContainer = (comments)=>{
   const commentContent = document.createElement("div")
