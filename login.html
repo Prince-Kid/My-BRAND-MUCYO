@@ -1,41 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Css/signup.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Css/popup.css" />
+    <link rel="stylesheet" href="./Css/signup.css" />
     <title>Log In</title>
-</head>
-<body>
-  <header class="header" id="header">
-    <a href="./index.html" class="logo">PrinceM</a>
-    <nav class="navbar">
-    </nav>  
-</header>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <a href="./index.html" class="logo">PrinceM</a>
+      <nav class="navbar"></nav>
+    </header>
     <section id="signup">
       <div class="signup-board">
-         <form action="" id="form">
-            <h2>Log In </h2>
-            
-             <div class="input-control">
-              <input type="email" name="email" id="email" placeholder="Email address">
-              <div class="error"></div>
-             </div><br>
-            
-             <div class="input-control">             
-                  <input id="password" name="password" type="password" placeholder="Enter Password"/>
-  
-                  <div class="error"></div>
-              </div><br>
-  
-              <h5>Forgot Your Password ?</h5>
-             <button  class="signup-btn" type="submit">Log In</button>
+        <form action="" id="form">
+          <h2>Log In</h2>
 
-             <h5 class="signup-now">Create an account <a style ="color: darkcyan" href="./signup.html">Sign Up Now</a></h5>
-         </form>
+          <div class="input-control">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email address"
+            />
+            <div class="error"></div>
+          </div>
+          <br />
+
+          <div class="input-control">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter Password"
+            />
+
+            <div class="error"></div>
+          </div>
+          <br />
+
+          <h5>Forgot Your Password ?</h5>
+          <button class="signup-btn" type="submit" id="open-popup-btn">
+            Log In
+          </button>
+
+          <h5 class="signup-now">
+            Create an account
+            <a style="color: darkcyan" href="./signup.html">Sign Up Now</a>
+          </h5>
+        </form>
       </div>
     </section>
 
+    <div class="popUp-card center">
+      <div class="popUp-icon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="poptitle">
+        <h2>Success !!</h2>
+      </div>
+      <div class="description">
+        <h4>Login Successfully !!!!</h4>
+      </div>
+      <div class="dismiss-btn" style="margin-left: 75px">
+        <button id="dismiss-btn">Dismiss</button>
+      </div>
+    </div>
+
+    <div class="popUp-card1 center">
+      <div class="popUp-icon1">
+        <i class="fa-solid fa-circle-exclamation" style="color: #dd1d1d"></i>
+      </div>
+      <div class="poptitle">
+        <h2>Failed To Log In !!</h2>
+      </div>
+      <div class="description">
+        <h4>Invalid Email Or Password</h4>
+      </div>
+      <div class="dismiss-btn" style="margin-left: 75px">
+        <button id="dismiss-btn1">Dismiss</button>
+      </div>
+    </div>
     <script src="./Js/loginValidation.js"></script>
-</body>
+  </body>
 </html>
