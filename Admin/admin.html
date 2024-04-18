@@ -14,7 +14,7 @@
             <li><a href="admin.html">Manage Blog</a></li>
             <li><a href="message.html">Messages</a></li>
             <li><a href="profile.html">Profile</a></li>
-            <li> <a href="./login.html">Log Out</a></li>
+            <li> <a href="../login.html">Log Out</a></li>
            
         
         </nav>  
@@ -24,7 +24,7 @@
          <li><a href="admin.html" class="active">Manage Blog</a></li>
          <li><a href="message.html">Messages</a></li>
          
-         <li> <a href="./login.html">Log Out</a></li>
+         <li> <a href="../login.html">Log Out</a></li>
         
             </ul> 
         <li class="menu-btn"> <a  onclick="showSideBar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" color="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
@@ -42,7 +42,11 @@
              <a href="create.html"> <button><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Article </button></a>
             </div>
          <div class="blog-container">
-            
+            <div class="no-blog">
+                <h2>Ooooops No Blog Founds.........</h2>
+                
+           </div>
+         </div>
             <!-- <div class="blog-box">
                 <div class="blog-img">
                     <img src="./Assets/Education.PNG" alt="Blog">
@@ -150,7 +154,85 @@
               -->
 
 
+            <script>
+                 fetch("https://my-brand-back-end-ts.onrender.com/blog/all")
+                 .then(res => res.json())
+                 .then((data)=>{
+                    let container = ""
+                     data.forEach(data =>{
+                     container += `<div class="blog-box">
+                <div class="blog-img">
+                    <img src="${data.cover}" alt="Blog">
+                </div>
+                <div class="blog-text">
+                    <span>${data.createdAt}</span>
+                    <a href="#" class="blog-title">${data.title}</a>
+                    <p>${data.content}</p>
+                    <div class="edit">
+                        <svg onClick="deleteBlog('${data._id}')" class="delete-btn" fill="red" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 354.319 354.319" xml:space="preserve" stroke="red">
+
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <g id="SVGRepo_iconCarrier"> <path id="XMLID_2_" d="M293.765,125.461l-41.574-17.221l17.221-41.574c3.17-7.654-0.464-16.428-8.118-19.599L150.428,1.146 C142.775-2.024,134,1.61,130.83,9.264l-17.221,41.574L72.035,33.617c-7.654-3.17-16.428,0.464-19.599,8.118 c-3.17,7.654,0.464,16.428,8.118,19.599l55.433,22.961l96.628,40.024H87.16c-8.284,0-15,6.716-15,15v200c0,8.284,6.716,15,15,15h180 c8.284,0,15-6.716,15-15V153.126l0.125,0.052c1.877,0.777,3.821,1.146,5.734,1.146c5.886,0,11.472-3.487,13.864-9.264 C305.053,137.406,301.419,128.631,293.765,125.461z M141.326,62.318l11.48-27.716l83.148,34.441l-11.48,27.716L182.9,79.539 L141.326,62.318z"/> </g>
+                            
+                            </svg>
+
+                           <a href="update.html?id=${data._id}"><svg  width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#1f43d1">
+
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#1f43d1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#1f43d1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                            
+                            </svg></a> 
+                     </div>
+                       </div>
+                      </div>`
+                    
+                      
+                     })
+
+             
+                   document.querySelector(".blog-container").innerHTML = container;
+                  }) 
+                 .catch(error =>{
+                 console.error("There is errro",error)
+                  })
+                  
+                 const deleteBlog = (id)=>{
+                    const confirm = window.confirm("Are You Sure You Want To Delete This Article?")
+                    if(confirm){
+                        let tokens = localStorage.getItem('jwt')
+                        let token = JSON.parse(tokens)
+                      
+                        fetch(`https://my-brand-back-end-ts.onrender.com/blog/delete/${id}`,{
+                        method:"DELETE",
+                        headers:{
+                            'Authorization':`Bearer ${token}`
+                        }
+                    })
+                     .then(res => res.json())
+                     .then(data => {console.log(data)
+                        window.location.reload()
+                    })
+                     .catch(error =>{
+                        console.log("Error",error)
+                     })
+                    }
+                   
+
+                 }
+                   
+                  
+                  
+                
+                  
             
+                 
+            </script>
            
          </div>
         </section>
