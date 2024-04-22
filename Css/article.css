@@ -131,7 +131,6 @@ body {
 .blog-text {
   padding: 30px;
   display: flex;
-  flex-direction: column;
 }
 .blog-text span {
   color: darkcyan;
@@ -145,16 +144,7 @@ body {
   color: darkcyan;
   transition: all ease 0.3s;
 }
-.blog-text p {
-  color: #9b9b9b;
-  font-size: 0.9rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: none;
-  text-overflow: ellipsis;
-  margin: 20px 0;
-}
+
 .blog-texts {
   padding: 30px;
   display: flex;
@@ -621,6 +611,7 @@ legend {
 .article-content {
   font-size: 1rem;
   line-height: 1.6;
+  padding: 10px;
 }
 
 .socialMedia a {
