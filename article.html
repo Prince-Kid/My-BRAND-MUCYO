@@ -113,7 +113,7 @@
       articleContent.innerHTML =
  ` <div class="article-container">
     
-   <h1>Article : ${data.title}</h1>
+   <h1>${data.title}</h1>
    <h5>Created at : ${createdAt}</h5>
    <div class="blog-boxs">
     <div class="blog-img">
@@ -121,11 +121,13 @@
     </div>
     <div class="blog-text">
         <span>${createdAt}</span><br>
-        <a href="#" class="blog-title">${data.title}</a><br><br>
+        <a href="#" class="blog-title">${data.title}</a>
+      </div>
+      
        <div class="article-content">
         ${data.content}
        </div>
-    </div>
+   
    </div>
    </div>
    
