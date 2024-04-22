@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((res) => res.json())
     .then((data) => {
       document.getElementById("title").value = data.title;
-      document.getElementById("content").value = data.content;
+      document.getElementById("content").innerHTML = data.content;
     })
     .catch((error) => {
       console.log("Erorr", error);
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     const articleTitleValue = document.getElementById("title").value;
     const articleCover = document.getElementById("cover").files[0];
-    const articleContentValue = document.getElementById("content").value;
+    const articleContentValue = document.getElementById("content").innerHTML;
 
     const BlogContent = new FormData();
 
@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         document
           .getElementsByClassName("popUp-card")[0]
           .classList.add("active");
