@@ -1,148 +1,144 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+  const createForm = document.getElementById("createForm");
+  const articleTitle = document.getElementById("ArticleTitle");
+  const articleCover = document.getElementById("articleCover");
+  const articleContent = document.getElementById("articleContent");
+  const blogContainer = document.getElementById("main-blog-container");
+  const singleArticle = document.querySelector(".article");
 
-    const createForm = document.getElementById("createForm");
-    const articleTitle = document.getElementById("ArticleTitle");
-    const articleCover = document.getElementById("articleCover");
-    const articleContent = document.getElementById("articleContent");
-    const blogContainer = document.getElementById("main-blog-container")
-    const singleArticle = document.querySelector(".article")
-    
-    createForm.addEventListener("submit", e => {
-        e.preventDefault();
-        inputValidation();
-    });
+  createForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    inputValidation();
+  });
 
-    const setError = (element, message) => {
-        const errorDisplay = element.nextElementSibling; 
-        errorDisplay.innerText = message;
-        errorDisplay.classList.add("error");
-        errorDisplay.classList.remove("success");
-    };
+  const setError = (element, message) => {
+    const errorDisplay = element.nextElementSibling;
+    errorDisplay.innerText = message;
+    errorDisplay.classList.add("error");
+    errorDisplay.classList.remove("success");
+  };
 
-    const setSuccess = element => {
-        const errorDisplay = element.nextElementSibling; 
-        errorDisplay.innerText = "";
-        errorDisplay.classList.add("success");
-        errorDisplay.classList.remove("error");
-        
-    };
+  const setSuccess = (element) => {
+    const errorDisplay = element.nextElementSibling;
+    errorDisplay.innerText = "";
+    errorDisplay.classList.add("success");
+    errorDisplay.classList.remove("error");
+  };
 
-    const inputValidation = () => {
-        const articleTitleValue = articleTitle.value.trim();
-       
-        const articleContentValue = articleContent.value.trim();
-        
-        if (articleTitleValue === "") {
-            setError(articleTitle, "Ooops Please Enter The Title");
-        } else {
-            setSuccess(articleTitle);
-        }
-        if (articleContentValue === "") {
-            setError(articleContent, "Ooooops Please Enter The Content Of Blog");
-        } else {
-            setSuccess(articleContent);
-        }
-        if (!articleCover.files[0]) {
-            setError(articleCover, "Ooops Please Enter Article Cover");
-        } else {
-            setSuccess(articleCover);
-        }
+  const inputValidation = () => {
+    const articleTitleValue = articleTitle.value.trim();
 
-
-        if(articleTitleValue && articleContentValue && articleCover.files[0]){
-    
-      
-       const BlogContent = new FormData()
-
-       BlogContent.append("title",articleTitleValue)
-       BlogContent.append("cover",articleCover.files[0])
-       BlogContent.append("content",articleContentValue)
-    
-       console.log(BlogContent)
-        let tokens = localStorage.getItem('jwt')
-        let token = JSON.parse(tokens)
-        console.log(token)
-      fetch("http://localhost:5000/blog/create",{
-       method: "POST",
-       headers : {
-          'Authorization':`Bearer ${token}`
-       },
-       body:BlogContent
-      })
-       .then(res => res.json())
-       .then(data =>{
-           console.log(data)
-           
-           document.getElementsByClassName("popUp-card")[0].classList.add("active");
-           document.getElementById("dismiss-btn").addEventListener("click",function(){
-           document.getElementsByClassName("popUp-card")[0].classList.remove("active");
-           window.location.href=`./admin.html`
-       })
-       })
-       .catch(error=>{
-           console.log("There was an Error",error)
-        })
-        
-        }
-
-        
-    };
-
- /**************************** Creating  New Article ***********************************/
-     
-//   const addArticle = (title,cover,content) =>{
-    
-//     const currentDate = new Date().toLocaleDateString();
-//     const articles = { title, cover, content, dateCreated: currentDate };
-//     const existingArticle = localStorage.getItem("article")
-//     const articleList = existingArticle ? JSON.parse(existingArticle): [];
-  
-//     articleList.push(articles);
-//    localStorage.setItem("article",JSON.stringify(articleList))
-//    return articles
-//   }
-
-
-    /*************************** Delete ***************** */
-
-    const deleteArticle = (index)=>{
-       
-        const confirm = window.confirm("Are You Sure You Want To Delete This Article?")
-
-        if (confirm){
-            let articleList = JSON.parse(localStorage.getItem("article"))
-            let comments = JSON.parse(localStorage.getItem('comment'))
-            if (articleList && Array.isArray(articleList) && index >= 0 && index < articleList.length ) {
-                articleList.splice(index, 1);
-                localStorage.setItem("article", JSON.stringify(articleList));                
-            }
-            
-            let count  = 0;
-            for(i = 0 ; i < comments.length; i++){
-                
-            if(comments[i].articleId == index){
-                  count ++;               
-                }
-             }
-             comments.splice(index,count)
-             localStorage.setItem("comment",JSON.stringify(comments))
-            
-             window.location.reload();
-
-        }
+    if (articleTitleValue === "") {
+      setError(articleTitle, "Ooops Please Enter The Title");
+    } else {
+      setSuccess(articleTitle);
+    }
+    // if (articleContentValue === "") {
+    //   setError(articleContent, "Ooooops Please Enter The Content Of Blog");
+    // } else {
+    //   setSuccess(articleContent);
+    // }
+    if (!articleCover.files[0]) {
+      setError(articleCover, "Ooops Please Enter Article Cover");
+    } else {
+      setSuccess(articleCover);
     }
 
-/*************************** Displaying The Articles In UI ****************/
+    if (articleTitleValue && articleCover.files[0]) {
+      const BlogContent = new FormData();
+      const content = articleContent.innerHTML;
+      BlogContent.append("title", articleTitleValue);
+      BlogContent.append("cover", articleCover.files[0]);
+      BlogContent.append("content", content);
 
-const existingArticle = localStorage.getItem("article");
-const articleList = JSON.parse(existingArticle)
+      console.log(BlogContent);
+      let tokens = localStorage.getItem("jwt");
+      let token = JSON.parse(tokens);
+      console.log(token);
+      fetch("https://my-brand-back-end-ts.onrender.com/blog/create", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: BlogContent,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          document
+            .getElementsByClassName("popUp-card")[0]
+            .classList.add("active");
+          document
+            .getElementById("dismiss-btn")
+            .addEventListener("click", function () {
+              document
+                .getElementsByClassName("popUp-card")[0]
+                .classList.remove("active");
+              window.location.href = `./admin.html`;
+            });
+        })
+        .catch((error) => {
+          console.log("There was an Error", error);
+        });
+    }
+  };
 
-if(articleList !== ""){
-    for(let i = 0 ; i < articleList.length ; i++ ){
-       
-            const blogContent = document.createElement("div")
+  /**************************** Creating  New Article ***********************************/
 
-            blogContent.innerHTML = ` <div class="blog-box">
+  //   const addArticle = (title,cover,content) =>{
+
+  //     const currentDate = new Date().toLocaleDateString();
+  //     const articles = { title, cover, content, dateCreated: currentDate };
+  //     const existingArticle = localStorage.getItem("article")
+  //     const articleList = existingArticle ? JSON.parse(existingArticle): [];
+
+  //     articleList.push(articles);
+  //    localStorage.setItem("article",JSON.stringify(articleList))
+  //    return articles
+  //   }
+
+  /*************************** Delete ***************** */
+
+  const deleteArticle = (index) => {
+    const confirm = window.confirm(
+      "Are You Sure You Want To Delete This Article?"
+    );
+
+    if (confirm) {
+      let articleList = JSON.parse(localStorage.getItem("article"));
+      let comments = JSON.parse(localStorage.getItem("comment"));
+      if (
+        articleList &&
+        Array.isArray(articleList) &&
+        index >= 0 &&
+        index < articleList.length
+      ) {
+        articleList.splice(index, 1);
+        localStorage.setItem("article", JSON.stringify(articleList));
+      }
+
+      let count = 0;
+      for (i = 0; i < comments.length; i++) {
+        if (comments[i].articleId == index) {
+          count++;
+        }
+      }
+      comments.splice(index, count);
+      localStorage.setItem("comment", JSON.stringify(comments));
+
+      window.location.reload();
+    }
+  };
+
+  /*************************** Displaying The Articles In UI ****************/
+
+  const existingArticle = localStorage.getItem("article");
+  const articleList = JSON.parse(existingArticle);
+
+  if (articleList !== "") {
+    for (let i = 0; i < articleList.length; i++) {
+      const blogContent = document.createElement("div");
+
+      blogContent.innerHTML = ` <div class="blog-box">
             <div class="blog-img">
                 <img src="${articleList[i].cover}" alt="Blog">
             </div>
@@ -174,37 +170,33 @@ if(articleList !== ""){
             </div>
         </div>
     
-        `
-            
-        blogContainer.append(blogContent)
+        `;
 
-        blogContent.querySelector('.delete-btn').addEventListener("click",function(e){
-            e.preventDefault()
-            deleteArticle(i)
-        })
+      blogContainer.append(blogContent);
 
+      blogContent
+        .querySelector(".delete-btn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          deleteArticle(i);
+        });
 
-            blogContent.querySelector(".blog-title").addEventListener("click",function(){
-                 window.location.href = `./article.html?id=${i}` 
-            })
-         }
-        
-
-     }
-     else{
-        blogContent.innerHTML = "Ooooop There is No Blog "
-
+      blogContent
+        .querySelector(".blog-title")
+        .addEventListener("click", function () {
+          window.location.href = `./article.html?id=${i}`;
+        });
     }
+  } else {
+    blogContent.innerHTML = "Ooooop There is No Blog ";
+  }
 
-        
-  
-    
-/******************************** Displaying The Individual Article************************************/
+  /******************************** Displaying The Individual Article************************************/
 
- const url = new URL(window.location.href)
- const idPar = url.searchParams.get("id");
- 
- singleArticle.innerHTML = ` <div class="article-container">
+  const url = new URL(window.location.href);
+  const idPar = url.searchParams.get("id");
+
+  singleArticle.innerHTML = ` <div class="article-container">
  <marquee behavior="" direction="">Welcome To Our Blog</marquee>
 <h1>Article : <u>${articleList[idPar].title}</u>
 </h1>
@@ -374,150 +366,132 @@ if(articleList !== ""){
 </div>
 </footer>
 
-`
+`;
 
+  /********************************* Creating The Comment  Section on Individual  Article ********************************/
 
+  const commentForm = document.getElementById("commentForm");
+  const commentContainer = document.getElementById("commentContainer");
+  const fullName = document.getElementById("fullName");
+  const userEmail = document.getElementById("userEmail");
+  const comment = document.getElementById("comment");
 
-/********************************* Creating The Comment  Section on Individual  Article ********************************/
-
-const commentForm = document.getElementById("commentForm")
-const commentContainer = document.getElementById("commentContainer")
-const fullName = document.getElementById("fullName")
-const userEmail = document.getElementById("userEmail")
-const comment = document.getElementById("comment")
-
-
-commentForm.addEventListener("submit", e => {
+  commentForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    validation()
-});
+    validation();
+  });
 
-const error = (element, message)=>{
+  const error = (element, message) => {
     const inputElement = element.parentElement;
-    errorDisplay = inputElement.querySelector(".error")
+    errorDisplay = inputElement.querySelector(".error");
     errorDisplay.innerHTML = message;
     errorDisplay.classList.add("error");
     errorDisplay.classList.remove("success");
-}
+  };
 
-const valid = (element)=>{
-  const inputElement = element.parentElement;
-  const errorDisplay = inputElement.querySelector(".error")
-  errorDisplay.innerHTML = "";
-  errorDisplay.classList.add("success")
-  errorDisplay.classList.remove('error')
-}
+  const valid = (element) => {
+    const inputElement = element.parentElement;
+    const errorDisplay = inputElement.querySelector(".error");
+    errorDisplay.innerHTML = "";
+    errorDisplay.classList.add("success");
+    errorDisplay.classList.remove("error");
+  };
 
-const validation = ()=>{
+  const validation = () => {
+    const fullNameValue = fullName.value.trim();
+    const userEmailValue = userEmail.value.trim();
+    const commentValue = comment.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
- const fullNameValue = fullName.value.trim() 
- const userEmailValue = userEmail.value.trim()
- const commentValue  = comment.value.trim()
- const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (fullNameValue === "") {
+      error(fullName, "Please  enter your Full Name.");
+    } else {
+      valid(fullName);
+    }
 
+    if (!emailRegex.test(userEmailValue)) {
+      error(userEmail, "Please Enter  a valid email address");
+    } else {
+      valid(userEmail);
+    }
 
- if(fullNameValue === ""){
-    error(fullName, "Please  enter your Full Name.")
- }else{
-    valid(fullName)
- }
- 
- if(!emailRegex.test(userEmailValue)){
-    error(userEmail, "Please Enter  a valid email address")
- }else{
-     valid(userEmail);
- }
+    if (commentValue === "") {
+      error(comment, "Comment can not be empty");
+    } else {
+      valid(comment);
+    }
 
-if(commentValue === "") {
-    error(comment,"Comment can not be empty")
-}
-else{
-    valid(comment)
-}
+    if (fullNameValue && userEmailValue && commentValue) {
+      alert("Your Comment Was Submitted Successfully !!");
 
-if(fullNameValue && userEmailValue && commentValue){
- 
-     alert("Your Comment Was Submitted Successfully !!")
+      addComment(idPar, fullNameValue, userEmailValue, commentValue);
 
+      fullName.value = "";
+      userEmail.value = "";
+      comment.value = "";
 
-      addComment(idPar,fullNameValue,userEmailValue,commentValue)
+      window.location.href = `article.html?id=${idPar}`;
+    }
+  };
 
-    fullName.value = ""
-    userEmail.value = ""
-    comment.value = ""
+  /******************************* Setting The Comment Into local Storage  ************************************/
 
-    window.location.href=`article.html?id=${idPar}`
-}
+  const addComment = (articleId, fullName, userEmail, comment) => {
+    const currentDate = new Date().toDateString();
+    const comments = { articleId, fullName, userEmail, comment, currentDate };
+    const existingComment = localStorage.getItem("comment");
+    const commentList = existingComment ? JSON.parse(existingComment) : [];
+    commentList.push(comments);
+    localStorage.setItem("comment", JSON.stringify(commentList));
 
-}
+    return comments;
+  };
 
-/******************************* Setting The Comment Into local Storage  ************************************/
+  /**************** Displaying Specific Comment To The Screeen*********************************** */
 
-const addComment = (articleId,fullName,userEmail,comment) =>{
-    const currentDate = new Date().toDateString()
-  const comments = {articleId,fullName,userEmail,comment,currentDate};
-  const existingComment  =  localStorage.getItem("comment")
-  const commentList = existingComment ? JSON.parse(existingComment) : [];
-  commentList.push(comments)
-  localStorage.setItem("comment",JSON.stringify(commentList))
+  const existingComment = localStorage.getItem("comment");
+  const commentList = JSON.parse(existingComment);
 
-  return comments
-}
-
-/**************** Displaying Specific Comment To The Screeen*********************************** */
-
-const existingComment = localStorage.getItem("comment")
-const commentList = JSON.parse(existingComment)
-
-if(commentList){
+  if (commentList) {
     let foundComments = false;
     let numberOfComment = 0;
 
-for( i = 0;i<commentList.length;i++){
-    
- if(commentList[i].articleId === idPar){
-  
-  const commentContent = document.createElement("div")
-  const profiles = document.createElement("div")
-  const username = document.createElement("h3")
-  const reactions = document.createElement("div")
-  const comm = document.createElement("textarea")
-  const btn = document.createElement("button")
-  const btn1 = document.createElement("button")
+    for (i = 0; i < commentList.length; i++) {
+      if (commentList[i].articleId === idPar) {
+        const commentContent = document.createElement("div");
+        const profiles = document.createElement("div");
+        const username = document.createElement("h3");
+        const reactions = document.createElement("div");
+        const comm = document.createElement("textarea");
+        const btn = document.createElement("button");
+        const btn1 = document.createElement("button");
 
+        commentContent.classList.add("commentContent");
+        btn.classList.add("reply");
+        profiles.classList.add("prof");
+        username.classList.add("user");
+        btn1.classList.add("like");
+        comm.classList.add("comm");
 
-  commentContent.classList.add("commentContent")
-  btn.classList.add("reply")
-  profiles.classList.add("prof")
-  username.classList.add("user")
-  btn1.classList.add("like")
-  comm.classList.add("comm")
-
-  username.innerHTML ="@" + commentList[i].fullName 
-  comm.innerHTML = commentList[i].comment
-  btn.innerHTML = "Reply"
-  btn1.innerHTML = "🩶"
-  profiles.innerHTML = commentList[i].currentDate
-  reactions.append(btn,btn1)
-  commentContent.append(username,profiles,comm,reactions)
-  commentContainer.appendChild(commentContent)
-  numberOfComment++;
-  foundComments = true;
-    }
-  
+        username.innerHTML = "@" + commentList[i].fullName;
+        comm.innerHTML = commentList[i].comment;
+        btn.innerHTML = "Reply";
+        btn1.innerHTML = "🩶";
+        profiles.innerHTML = commentList[i].currentDate;
+        reactions.append(btn, btn1);
+        commentContent.append(username, profiles, comm, reactions);
+        commentContainer.appendChild(commentContent);
+        numberOfComment++;
+        foundComments = true;
+      }
     }
     if (!foundComments) {
-        commentContainer.innerHTML =   "No Comment Yet";
-    }else{
-    const commentCountElement = document.createElement("p");
-    commentCountElement.innerHTML = "Number of comments: " + numberOfComment;
+      commentContainer.innerHTML = "No Comment Yet";
+    } else {
+      const commentCountElement = document.createElement("p");
+      commentCountElement.innerHTML = "Number of comments: " + numberOfComment;
 
-    commentContainer.appendChild(commentCountElement);
-}
-}
-
-
-
-})
-
-
+      commentContainer.appendChild(commentCountElement);
+    }
+  }
+});
