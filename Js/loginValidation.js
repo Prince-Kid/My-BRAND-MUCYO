@@ -75,7 +75,6 @@ const validateInputs = () => {
           return res.json();
         })
         .then((data) => {
-          console.log("User Data", data);
           if (data.message === "login Success") {
             let token = data.token;
             localStorage.setItem("jwt", JSON.stringify(token));
