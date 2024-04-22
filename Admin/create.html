@@ -1,95 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Css/create.css">
-    <link rel="stylesheet" href="../Css/popup.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/create.css" />
+    <link rel="stylesheet" href="../Css/popup.css" />
     <title>create Article</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header" id="header">
-        <a href="index.html" class="logo">PrinceM</a>
-        <nav class="navbar">
-         <li><a href="index.html">Home</a></li>
-         <li><a href="admin.html">Manage Blog</a></li>
-         <li><a href="#">Messages</a></li>
-         
-         <li> <a href="./login.html">Log Out</a></li>
-        
-        </nav>  
-        <ul class="sidebar">
-            <a class="x-btn" onclick="hideSideBar()" ><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" style="background-color: white;"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="admin.html">Manage Blog</a></li>
-            <li><a href="#">Messages</a></li>
-            
-            <li> <a href="./login.html">Log Out</a></li>
-            </ul> 
-        <li class="menu-btn"> <a  onclick="showSideBar()" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" color="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+      <a href="index.html" class="logo">PrinceM</a>
+      <nav class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin.html">Manage Blog</a></li>
+        <li><a href="#">Messages</a></li>
 
+        <li><a href="./login.html">Log Out</a></li>
+      </nav>
+      <ul class="sidebar">
+        <a class="x-btn" onclick="hideSideBar()"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+            style="background-color: white"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            /></svg
+        ></a>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin.html">Manage Blog</a></li>
+        <li><a href="#">Messages</a></li>
+
+        <li><a href="./login.html">Log Out</a></li>
+      </ul>
+      <li class="menu-btn">
+        <a onclick="showSideBar()" href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+            color="white"
+          >
+            <path
+              d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+            /></svg
+        ></a>
+      </li>
     </header>
 
-        <section class="update">
-            <div class="blog-heading">
-                <h2>create <span>Article</span></h2>
-            </div>
-          
-           <form  id="createForm">
-            
-            <label for="">Title Of Article</label> <br><br>
+    <section class="update">
+      <div class="blog-heading">
+        <h2>create <span>Article</span></h2>
+      </div>
 
-            <div class="input-control">
-            <input type="text" id="ArticleTitle" name="ArticleTitle"placeholder="Title Of Article.....................">
-            <div class="error"></div>
-            </div>    <br><br>
+      <form id="createForm">
+        <label for="">Title Of Article</label> <br /><br />
 
-            <label for="">Article Cover :</label>
-            <div class="input-control">
-            <input type="file" id="articleCover" placeholder="Article Cover">
-            <div class="error"></div>
-        </div>  <br>
-
-            <label for="">Article Content</label><br><br>
-            <div class="input-control">
-            
-            <textarea  id="articleContent" cols="100" rows="10"></textarea>
-            <div class="error"></div>
-             </div>   <br>
-
-            <button type="submit" id="open-popup-btn" >create</button>
-
-           </form>
-
-        </section>
-        
-        <div class="popUp-card center">
-            <div class="popUp-icon">
-                 <i class="fa fa-check"></i>
-            </div>
-            <div class="poptitle">
-              <h2>Success !!</h2>
-            </div>
-            <div class="description">
-              <h4>Article Created Successfully !!!!</h4>
-            </div>
-            <div class="dismiss-btn">
-                <button id="dismiss-btn">Dismiss</button>
-            </div>
+        <div class="input-control">
+          <input
+            type="text"
+            id="ArticleTitle"
+            name="ArticleTitle"
+            placeholder="Title Of Article....................."
+          />
+          <div class="error"></div>
         </div>
-        <script src="..//Js/create.js"></script>
-</body>
+        <br /><br />
 
-<script>
-    function showSideBar(){
-        const sideBar = document.querySelector('.sidebar');
-        sideBar.style.display = 'flex'
+        <label for="">Article Cover :</label>
+        <div class="input-control">
+          <input type="file" id="articleCover" placeholder="Article Cover" />
+          <div class="error"></div>
+        </div>
+        <br />
+
+        <label for="">Article Content</label><br /><br />
+        <div class="input-control">
+          <div id="articleContent" contenteditable="true"></div>
+          <div class="error"></div>
+        </div>
+        <br />
+
+        <button type="submit" id="open-popup-btn">create</button>
+      </form>
+    </section>
+
+    <div class="popUp-card center">
+      <div class="popUp-icon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="poptitle">
+        <h2>Success !!</h2>
+      </div>
+      <div class="description">
+        <h4>Article Created Successfully !!!!</h4>
+      </div>
+      <div class="dismiss-btn">
+        <button id="dismiss-btn">Dismiss</button>
+      </div>
+    </div>
+    <script src="..//Js/create.js"></script>
+  </body>
+
+  <script>
+    function showSideBar() {
+      const sideBar = document.querySelector(".sidebar");
+      sideBar.style.display = "flex";
     }
-    function hideSideBar(){
-        const sideBar = document.querySelector('.sidebar');
-        sideBar.style.display = 'none'
+    function hideSideBar() {
+      const sideBar = document.querySelector(".sidebar");
+      sideBar.style.display = "none";
     }
-    
 
     // document.getElementById("createForm").addEventListener("submit",e=>{
     //     e.preventDefault()
@@ -99,7 +124,5 @@
     //   const articleContentValue=  document.getElementById("articleContent").value;
 
     // })
-   
-        
-</script>
+  </script>
 </html>
