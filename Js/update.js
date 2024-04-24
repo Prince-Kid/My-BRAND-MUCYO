@@ -19,7 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const articleTitleValue = document.getElementById("title").value;
     const articleCover = document.getElementById("cover").files[0];
     const articleContentValue = document.getElementById("content").innerHTML;
+    const loader = document.querySelector(".dot-spinner");
+    const showLoader = () => {
+      loader.style.visibility = "visible";
+    };
 
+    const hideLoader = () => {
+      loader.style.visibility = "hidden";
+    };
+    showLoader();
     const BlogContent = new FormData();
 
     BlogContent.append("title", articleTitleValue);
@@ -40,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     )
       .then((res) => res.json())
       .then((data) => {
+        hideLoader();
         document
           .getElementsByClassName("popUp-card")[0]
           .classList.add("active");
