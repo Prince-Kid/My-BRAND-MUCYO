@@ -43,7 +43,45 @@
             </div>
          <div class="blog-container">
             <div class="no-blog">
-                <h2>Ooooops No Blog Founds.........</h2>
+                <div class="loader">
+                    <div class="wrapper">
+                      <div class="circle"></div>
+                      <div class="line-1"></div>
+                      <div class="line-2"></div>
+                      <div class="line-3"></div>
+                      <div class="line-4"></div>
+                    </div>
+                  </div>
+
+                  <div class="loader">
+                    <div class="wrapper">
+                      <div class="circle"></div>
+                      <div class="line-1"></div>
+                      <div class="line-2"></div>
+                      <div class="line-3"></div>
+                      <div class="line-4"></div>
+                    </div>
+                  </div>
+
+                  <div class="loader">
+                    <div class="wrapper">
+                      <div class="circle"></div>
+                      <div class="line-1"></div>
+                      <div class="line-2"></div>
+                      <div class="line-3"></div>
+                      <div class="line-4"></div>
+                    </div>
+                  </div>
+
+                  <div class="loader">
+                    <div class="wrapper">
+                      <div class="circle"></div>
+                      <div class="line-1"></div>
+                      <div class="line-2"></div>
+                      <div class="line-3"></div>
+                      <div class="line-4"></div>
+                    </div>
+                  </div>
                 
            </div>
          </div>
@@ -207,7 +245,7 @@
                     if(confirm){
                         let tokens = localStorage.getItem('jwt')
                         let token = JSON.parse(tokens)
-                      
+                        window.location.reload()
                         fetch(`https://my-brand-back-end-ts.onrender.com/blog/delete/${id}`,{
                         method:"DELETE",
                         headers:{
