@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const articleContent = document.getElementById("articleContent");
   const blogContainer = document.getElementById("main-blog-container");
   const singleArticle = document.querySelector(".article");
-
+  const loader = document.querySelector(".dot-spinner");
   createForm.addEventListener("submit", (e) => {
     e.preventDefault();
     inputValidation();
@@ -24,7 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
     errorDisplay.classList.add("success");
     errorDisplay.classList.remove("error");
   };
+  const showLoader = () => {
+    loader.style.visibility = "visible";
+  };
 
+  const hideLoader = () => {
+    loader.style.visibility = "hidden";
+  };
   const inputValidation = () => {
     const articleTitleValue = articleTitle.value.trim();
 
@@ -45,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (articleTitleValue && articleCover.files[0]) {
+      showLoader();
       const BlogContent = new FormData();
       const content = articleContent.innerHTML;
       BlogContent.append("title", articleTitleValue);
       BlogContent.append("cover", articleCover.files[0]);
       BlogContent.append("content", content);
 
-      console.log(BlogContent);
       let tokens = localStorage.getItem("jwt");
       let token = JSON.parse(tokens);
       console.log(token);
@@ -77,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         })
         .catch((error) => {
+          hideLoader();
           console.log("There was an Error", error);
         });
     }
