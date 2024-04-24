@@ -1,6 +1,7 @@
 const form = document.getElementById("form");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
+const loader = document.querySelector(".dot-spinner");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -24,6 +25,13 @@ const setSuccess = (element) => {
   inputControl.classList.add("success");
   inputControl.classList.remove("error");
 };
+const showLoader = () => {
+  loader.style.visibility = "visible";
+};
+
+const hideLoader = () => {
+  loader.style.visibility = "hidden";
+};
 
 const validateInputs = () => {
   const emailValue = email.value.trim();
@@ -46,7 +54,7 @@ const validateInputs = () => {
       email: emailValue,
       password: passwordValue,
     };
-
+    showLoader();
     try {
       fetch("https://my-brand-back-end-ts.onrender.com/auth/login", {
         method: "POST",
@@ -104,6 +112,7 @@ const validateInputs = () => {
           }
         });
     } catch (error) {
+      hideLoader();
       console.log("There Was An Error In Connecton", error);
     }
   }
