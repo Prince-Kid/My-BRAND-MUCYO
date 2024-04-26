@@ -338,3 +338,8 @@ button {
     opacity: 1;
   }
 }
+#articleContent {
+  background-color: #ededed;
+  padding: 8px;
+  color: black;
+}
