@@ -83,6 +83,7 @@ const validateInputs = () => {
           return res.json();
         })
         .then((data) => {
+          hideLoader();
           if (data.message === "login Success") {
             let token = data.token;
             localStorage.setItem("jwt", JSON.stringify(token));
@@ -98,6 +99,7 @@ const validateInputs = () => {
                 window.location.href = "./Admin/admin.html";
               });
           } else if (data.message === "Invalid Email Or Password") {
+            hideLoader();
             document
               .getElementsByClassName("popUp-card1")[0]
               .classList.add("active");
@@ -112,7 +114,6 @@ const validateInputs = () => {
           }
         });
     } catch (error) {
-      hideLoader();
       console.log("There Was An Error In Connecton", error);
     }
   }
