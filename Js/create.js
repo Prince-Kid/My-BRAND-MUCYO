@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let tokens = localStorage.getItem("jwt");
       let token = JSON.parse(tokens);
-      console.log(token);
+
       fetch("https://my-brand-back-end-ts.onrender.com/blog/create", {
         method: "POST",
         headers: {
