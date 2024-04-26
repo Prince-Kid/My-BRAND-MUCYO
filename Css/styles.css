@@ -88,12 +88,15 @@ body {
   color: white;
   transition: 0.5s ease;
 }
+.btni a:hover {
+  color: white;
+}
 .herodesc {
   font-size: small;
   font-weight: 100;
 }
 .btn {
-  background: #0ef;
+  background: darkcyan;
   margin: 2rem 0;
   padding: 0.5rem 2rem;
   border: none;
@@ -179,7 +182,7 @@ a {
     font-weight: 100;
   }
   .helloname {
-    color: cyan;
+    color: darkcyan;
   }
   .herodesc {
     font-size: medium;
@@ -208,7 +211,7 @@ a {
   position: fixed;
   top: 0;
   right: 0;
-  height: 50vh;
+  height: 70vh;
   width: 250px;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.9);
@@ -580,6 +583,7 @@ a {
   border-radius: 0.5rem;
   margin: 2rem;
   cursor: pointer;
+  color: white;
 }
 .btn a {
   color: black;
