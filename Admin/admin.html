@@ -245,7 +245,7 @@
                     if(confirm){
                         let tokens = localStorage.getItem('jwt')
                         let token = JSON.parse(tokens)
-                        window.location.reload()
+                       
                         fetch(`https://my-brand-back-end-ts.onrender.com/blog/delete/${id}`,{
                         method:"DELETE",
                         headers:{
@@ -253,7 +253,10 @@
                         }
                     })
                      .then(res => res.json())
-                    
+                     .then(data =>{
+                        console.log("Deleted")
+                        window.location.reload()
+                     })
                      .catch(error =>{
                         console.log("Error",error)
                      })
