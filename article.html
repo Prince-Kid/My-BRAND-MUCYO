@@ -350,7 +350,7 @@ fetch(`https://my-brand-back-end-ts.onrender.com/blog/getBlog/${articleId}`)
 .then(data =>{
     document.querySelector('#likes').innerHTML = data.likes
 
-
+    console.log("Data",data.likes)
 })
 .catch(error=>{
     console.log("errro",error)
