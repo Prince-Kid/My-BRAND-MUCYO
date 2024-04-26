@@ -831,7 +831,7 @@ footer .last i {
 
 .loader {
   position: relative;
-  width: 400px;
+  width: 350px;
   height: 130px;
   margin-bottom: 10px;
   border: 1px solid #d3d3d3;
@@ -925,4 +925,11 @@ footer .last i {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
+}
+html {
+  scroll-behavior: smooth;
 }
