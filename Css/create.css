@@ -338,3 +338,6 @@ button {
     opacity: 1;
   }
 }
+#articleContent {
+  border: 3px solid white;
+}
