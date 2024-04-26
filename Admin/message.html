@@ -53,34 +53,33 @@
 
     <section id="feedback">
       <h2>Feedback</h2>
-      <table id="form">
-        <thead>
-          <tr>
-            <th>Names</th>
-            <th>Email</th>
-            <th>Message</th>
-          </tr>
-        </thead>
-        <tbody class="messages"></tbody>
-      </table>
-
-      <script>
-        fetch("http://localhost:5000/msg/feedback")
-          .then((response) => response.json())
-          .then((data) => {
-            document.querySelector(".messages").innerHTML = "";
-            data.forEach((messsages) => {
-              document.querySelector(".messages").innerHTML += `
-                <tr> <td>${messsages.names}</td>
-                <td>${messsages.email}</td>
-                <td>${messsages.message}</td> </tr>`;
-            });
-          })
-          .catch((error) => {
-            console.log("There was an Error", error);
-          });
-      </script>
+      <div class="feedback-container"></div>
     </section>
+    <script>
+      fetch("https://my-brand-back-end-ts.onrender.com/msg/feedback")
+        .then((response) => response.json())
+        .then((data) => {
+          let Feedback = "";
+
+          data.forEach((messsages) => {
+            Feedback += `
+              <div class="msg-container">
+                <div class="sender-details">
+                  <h5 class="sender-names">${messsages.names}</h5>
+                  <h5 class="sender-email">${messsages.email}</h5>
+                </div>
+        
+                <p class="msg-message">${messsages.message}</p>
+              </div>
+              `;
+          });
+          document.querySelector(".feedback-container").innerHTML = Feedback;
+        })
+        .catch((error) => {
+          console.log("There was an Error", error);
+          s;
+        });
+    </script>
 
     <script src="../Js/contactValidation.js"></script>
   </body>
